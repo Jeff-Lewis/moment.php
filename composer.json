@@ -1,5 +1,5 @@
 {
-    "name": "fightbulc/moment",
+    "name": "jeff-lewis/moment",
     "description": "Parse, validate, manipulate, and display dates in PHP. Inspired by moment.js",
     "type": "library",
     "keywords": [

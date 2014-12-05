@@ -693,41 +693,43 @@ class Moment extends \DateTime
 
     /**
      * @param bool $withTime
+     * @param string $timeFormat
+     * @param string $dateFormat
      *
      * @return string
      */
-    public function calendar($withTime = true)
+    public function calendar( $withTime = true, $timeFormat = 'H:i', $dateFormat = 'm/d/Y' )
     {
         $momentFromVo = $this->fromNow($this->getTimezoneString());
         $diff = floor($momentFromVo->getDays());
 
         if ($diff > 6)
         {
-            $format = 'm/d/Y';
+            $format = $dateFormat . ( $withTime === true ? ' [at] ' . $timeFormat : null );
         }
         elseif ($diff > 1)
         {
-            $format = '[Last] l' . ($withTime === true ? ' [at] H:i' : null);
+            $format = '[Last] l' . ( $withTime === true ? ' [at] ' . $timeFormat : null);
         }
         elseif ($diff > 0)
         {
-            $format = '[Yesterday]' . ($withTime === true ? ' [at] H:i' : null);
+            $format = '[Yesterday]' . ( $withTime === true ? ' [at] ' . $timeFormat : null);
         }
         elseif ($diff == 0)
         {
-            $format = '[Today]' . ($withTime === true ? ' [at] H:i' : null);
+            $format = '[Today]' . ( $withTime === true ? ' [at] ' . $timeFormat : null);
         }
         elseif ($diff >= -1)
         {
-            $format = '[Tomorrow]' . ($withTime === true ? ' [at] H:i' : null);
+            $format = '[Tomorrow]' . ( $withTime === true ? ' [at] ' . $timeFormat : null);
         }
         elseif ($diff > -7)
         {
-            $format = 'l' . ($withTime === true ? ' [at] H:i' : null);
+            $format = 'l' . ( $withTime === true ? ' [at] ' . $timeFormat : null);
         }
         else
         {
-            $format = 'm/d/Y';
+            $format = $dateFormat . ( $withTime === true ? ' [at] ' . $timeFormat : null );
         }
 
         return $this->format($format);
