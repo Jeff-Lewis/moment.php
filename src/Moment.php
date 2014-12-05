@@ -705,7 +705,7 @@ class Moment extends \DateTime
 
         if ($diff > 6)
         {
-            $format = $dateFormat . ( $withTime === true ? ' [at] ' . $timeFormat : null );
+            $format = $dateFormat . ( $withTime === true ? ' ' . $timeFormat : null );
         }
         elseif ($diff > 1)
         {
@@ -729,7 +729,7 @@ class Moment extends \DateTime
         }
         else
         {
-            $format = $dateFormat . ( $withTime === true ? ' [at] ' . $timeFormat : null );
+            $format = $dateFormat . ( $withTime === true ? ' ' . $timeFormat : null );
         }
 
         return $this->format($format);
